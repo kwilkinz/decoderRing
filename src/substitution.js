@@ -3,7 +3,7 @@
 // Only add code (helper methods, variables, etc.) within the scope
 // of the anonymous function on line 6
 
-const { use } = require("chai");
+
 
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
@@ -12,7 +12,7 @@ const substitutionModule = (function () {
     // Error Handling: if no alphabet or not equal to 26 return false
     // .set does not allow duplicates in what your parameter is (alphabet)
     if (!alphabet || alphabet.length !== 26) return false;
-    if (Array.from(new Set(alphabet)).length != 26) return false;
+    if (Array.from(new Set(alphabet)).length !== 26) return false;
        // Substitution Alphabet can not have any repeated characters
     /* [
       'a', 'b', 'c', 'd', 'e', 'f',
@@ -21,7 +21,7 @@ const substitutionModule = (function () {
       's', 't', 'u', 'v', 'w', 'x',
       'y', 'z'
     ]*/ 
-    let myABC = "abcdefghijklmnopqrstuvwxyz".split('');
+    let myABC = "abcdefghijklmnopqrstuvwxyz";
     alphabet = alphabet.split('');
     input = input.toLowerCase();
     
@@ -32,15 +32,19 @@ const substitutionModule = (function () {
 
     // do work 
     //Step 1: Get ALL letters in input, & index on the myABC
-    myABC.forEach((letter, index) => {
-      findNumbers[letter] = alphabet[index] // A = X
-      decode[alphabet[index]] = letter      
+    myABC.split('').forEach((letter, index) => {
+      findNumbers[letter] = alphabet[index] // b: 'w', c: 'a'
+      decode[alphabet[index]] = letter      // p: 'a',
     })
-    if (!encode) // ex: ysiipik
+    //console.log(findNumbers)
+    //console.log(decode)
+
+    if (!encode) 
+    findNumbers = decode// ex: ysiipik
     // now that we are decoding we are letting findNumbers be decode
-    findNumbers = decode
-    console.log(input)
-    input.split('').forEach((input) => {
+    
+    //console.log(input) // message
+    input.split('').forEach(input => {
       // empty str. if input is equal to spaces, leave space if not use the letter 
       // object {} using the input letter to retrieve the actual letter
       result += input === ' ' ? ' ' : findNumbers[input]

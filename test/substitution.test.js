@@ -31,7 +31,7 @@ describe("substitution() submission tests written by Thinkful", () => {
       const actual = substitution(message, alphabet);
       const expected = "ykrrpik";
 
-      expect(actual).to.equal(expected);
+      expect(actual).to.eql(expected);
     });
 
     it("should work with any kind of key with unique characters", () => {
